@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Katherine + Tim's Wedding</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
@@ -12,29 +14,36 @@
             box-sizing: border-box;
             cursor: url('sym229.ani'), auto;
         }
+    </style>
+ 
+    <style>
         body {
             font-family: 'Cormorant Garamond', serif;
+            background-color: #f5e6d3;
             color: #333;
         }
-
-        /* Semi-transparent overlay for better button visibility */
-        .hero::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 200px;
-            background: linear-gradient(to top, rgba(245, 230, 211, 0.95), transparent);
-            pointer-events: none;
+ 
+        .hero-image {
+            width: 100%;
+            max-width: 100%;
+            display: block;
         }
-
+ 
+        .hero {
+            background-color: #f5e6d3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+ 
         .hero-content {
-            z-index: 10;
             text-align: center;
             animation: fadeInUp 1s ease-out;
         }
-
+ 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -45,7 +54,7 @@
                 transform: translateY(0);
             }
         }
-
+ 
         .hero-text {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.3em;
@@ -54,8 +63,7 @@
             font-weight: 400;
             letter-spacing: 1px;
         }
-
-        /* BUTTONS */
+ 
         .nav-buttons {
             display: flex;
             gap: 30px;
@@ -63,7 +71,7 @@
             flex-wrap: wrap;
             margin-bottom: 20px;
         }
-
+ 
         .nav-btn {
             border: 2.5px solid #a41e3a;
             background: white;
@@ -80,66 +88,52 @@
             letter-spacing: 1px;
             box-shadow: 0 4px 12px rgba(164, 30, 58, 0.1);
         }
-
+ 
         .nav-btn:hover {
             background: #a41e3a;
             color: white;
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(164, 30, 58, 0.2);
         }
-
+ 
         .scroll-indicator {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
+            margin-top: 20px;
             font-size: 1.5em;
-            z-index: 5;
+            animation: bounce 2s infinite;
         }
-
+ 
         @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(-15px); }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
-
-        /* RESPONSIVE */
+ 
         @media (max-width: 768px) {
-            .hero {
-                min-height: 100vh;
-                justify-content: center;
-            }
-
-            .hero::before {
-                height: 300px;
-            }
-
             .hero-text {
                 font-size: 1.1em;
             }
-
+ 
             .nav-buttons {
                 gap: 20px;
                 flex-direction: column;
             }
-
+ 
             .nav-btn {
                 width: 100%;
                 max-width: 250px;
                 padding: 12px 30px;
             }
-
+ 
             .scroll-indicator {
                 display: none;
             }
         }
-
+ 
         @media (max-width: 480px) {
             .hero-text {
                 font-size: 1em;
                 margin-bottom: 30px;
             }
-
+ 
             .nav-btn {
                 font-size: 1em;
                 padding: 12px 25px;
@@ -148,7 +142,8 @@
     </style>
 </head>
 <body>
-  <!-- HERO IMAGE -->
+ 
+    <!-- HERO IMAGE -->
     <img src="page1-landing.png" alt="Katherine + Tim Wedding" class="hero-image">
  
     <!-- BUTTONS BELOW IMAGE -->
@@ -158,10 +153,12 @@
             
             <div class="nav-buttons">
                 <a href="details.html" class="nav-btn">Details</a>
-                <a href="https://sayi.do/katherineandtimothy8403/rsvp" class="nav-btn">RSVP</a>
+                <a href="details.html#rsvp" class="nav-btn">RSVP</a>
             </div>
-        
+        </div>
+ 
+        <div class="scroll-indicator">⬇️</div>
     </div>
-
+ 
 </body>
 </html>
