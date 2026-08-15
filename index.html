@@ -1,68 +1,183 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katherine + Tim's Wedding</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * {
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23a41e3a"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>') 12 12, auto;
-        }
-        
-        body {
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            box-sizing: border-box;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23a41e3a"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>') 12 12, auto;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            color: #333;
+        }
+
+        /* FULL SCREEN HERO WITH CANVA IMAGE */
+        .hero {
+            background-image: url('page1-landing.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             min-height: 100vh;
-            background: #f5e6d3;
-        }
-        
-        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 60px 20px;
             position: relative;
-            width: 100%;
-            max-width: 800px;
         }
-        
-        .canva-embed {
-            width: 100%;
-        }
-        
-        .buttons {
+
+        /* Semi-transparent overlay for better button visibility */
+        .hero::before {
+            content: '';
             position: absolute;
-            bottom: 40px;
+            bottom: 0;
             left: 0;
             right: 0;
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            z-index: 10;
+            height: 200px;
+            background: linear-gradient(to top, rgba(245, 230, 211, 0.95), transparent);
+            pointer-events: none;
         }
-        
-        .btn {
-            border: 2px solid #a41e3a;
+
+        .hero-content {
+            z-index: 10;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 40px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* BUTTONS */
+        .nav-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .nav-btn {
+            border: 2.5px solid #a41e3a;
             background: white;
             color: #a41e3a;
-            padding: 12px 30px;
-            font-size: 1em;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
+            padding: 14px 40px;
+            font-size: 1.1em;
             cursor: pointer;
-            transition: all 0.3s;
+            border-radius: 50px;
+            font-family: 'Cormorant Garamond', serif;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(164, 30, 58, 0.1);
         }
-        
-        .btn:hover {
+
+        .nav-btn:hover {
             background: #a41e3a;
             color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(164, 30, 58, 0.2);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            font-size: 1.5em;
+            z-index: 5;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-15px); }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 100vh;
+                justify-content: center;
+            }
+
+            .hero::before {
+                height: 300px;
+            }
+
+            .hero-text {
+                font-size: 1.1em;
+            }
+
+            .nav-buttons {
+                gap: 20px;
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                width: 100%;
+                max-width: 250px;
+                padding: 12px 30px;
+            }
+
+            .scroll-indicator {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text {
+                font-size: 1em;
+                margin-bottom: 30px;
+            }
+
+            .nav-btn {
+                font-size: 1em;
+                padding: 12px 25px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-       <div style="position: relative; width: 100%; height: 0; padding-top: 168.6676%; padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden; border-radius: 8px; will-change: transform;">  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"    src="https://www.canva.com/design/DAHR-SAhvxw/eWczXNurq2i4ROHYWJS7XQ/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">  </iframe></div><a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAHR-SAhvxw&#x2F;eWczXNurq2i4ROHYWJS7XQ&#x2F;view?utm_content=DAHR-SAhvxw&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">Katherine &amp; TIm</a> by katherinelou.shaw
-        <div class="buttons">
-            <a href="details.html" class="btn">Details</a>
-            <a href="details.html#rsvp" class="btn">RSVP</a>
+
+    <!-- FULL SCREEN HERO LANDING PAGE -->
+    <div class="hero">
+        <div class="hero-content">
+            <p class="hero-text">Join us to celebrate our special day</p>
+            
+            <div class="nav-buttons">
+                <a href="details.html" class="nav-btn">Details</a>
+                <a href="details.html#rsvp" class="nav-btn">RSVP</a>
+            </div>
         </div>
+
+        <div class="scroll-indicator">⬇️</div>
     </div>
+
 </body>
 </html>
